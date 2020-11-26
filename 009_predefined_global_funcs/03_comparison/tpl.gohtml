@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Comparison operators</title>
+    </head>
+    <body>
+        {{if gt .Score1 .Score2}}
+            Score1 > Score2
+        {{end}}
+        {{if lt .Score1 .Score2}}
+            Score1 < Score2
+        {{end}}
+        {{if eq .Score1 .Score2}}
+            Score1 == Score2
+        {{end}}
+        {{if lt .Score1 10}}
+            Last One : Score1 < 10
+        {{end}}
+    </body>
+</html>
