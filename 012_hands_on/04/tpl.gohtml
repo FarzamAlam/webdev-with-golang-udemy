@@ -1,0 +1,13 @@
+<!DOCKTYPE html>
+<html>
+    <head>
+        <title>California hotels</title>
+    </head>
+    <body>
+        {{range .}}
+            Date | Open | High | Low | Close | Volume | Adj Close
+            {{.Date}} {{.Open}} {{.High}} {{.Low}} {{.Close}} {{.Volume}} {{.AdjClose}}
+
+        {{end}}
+    </body>
+</html>
