@@ -22,6 +22,8 @@ func main() {
 		io.WriteString(conn, "\nHello from the TCP server.\n")
 		fmt.Fprintln(conn, "How's your day?")
 		fmt.Fprintf(conn, "%v\n", "Well I hope")
+		conn.Close()
+
 	}
 
 }
