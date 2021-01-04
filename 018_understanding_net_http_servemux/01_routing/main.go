@@ -14,7 +14,7 @@ func (h hotdog) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	case "/cat":
 		io.WriteString(w, "Meow...")
 	default:
-		io.WriteString(w, "Silent Animal")
+		io.WriteString(w, "HuHu...")
 	}
 }
 func main() {
