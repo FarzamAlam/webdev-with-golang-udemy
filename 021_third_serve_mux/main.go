@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/julienschmidt/httprouter"
@@ -32,6 +33,28 @@ func user(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func blogRead(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
+	fmt.Fprintf(w, "READ CATEGORY, %s!\n", ps.ByName("category"))
+	fmt.Fprintf(w, "READ ARTICLE, %s!\n", ps.ByName("article"))
+}
+
+func blogWrite(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 	fmt.Fprintf(w, "WRITE CATEGORY, %s!\n", ps.ByName("category"))
 	fmt.Fprintf(w, "WRITE ARTICLE, %s!\n", ps.ByName("article"))
+}
+
+func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.Execute(w, "index.gohtml", nil)
+	HandleError(w, err)
+}
+
+func about(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.Execute(w, "about.gohtml", nil)
+	HandleError(w, err)
+}
+
+func HandleError(w http.ResponseWriter, err error) {
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		log.Fatalln(err)
+	}
 }
