@@ -43,12 +43,27 @@ func blogWrite(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 }
 
 func index(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	err := tpl.Execute(w, "index.gohtml", nil)
+	err := tpl.ExecuteTemplate(w, "index.gohtml", nil)
 	HandleError(w, err)
 }
 
 func about(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-	err := tpl.Execute(w, "about.gohtml", nil)
+	err := tpl.ExecuteTemplate(w, "about.gohtml", nil)
+	HandleError(w, err)
+}
+
+func contact(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "contact.gohtml", nil)
+	HandleError(w, err)
+}
+
+func apply(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "apply.gohtml", nil)
+	HandleError(w, err)
+}
+
+func applyProcess(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	err := tpl.ExecuteTemplate(w, "applyProcess.gohtml", nil)
 	HandleError(w, err)
 }
 
