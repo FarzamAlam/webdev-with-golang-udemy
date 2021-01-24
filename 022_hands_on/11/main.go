@@ -127,3 +127,23 @@ func handleApplyPost(c net.Conn) {
 	io.WriteString(c, "\r\n")
 	io.WriteString(c, body)
 }
+
+func handleDefault(c net.Conn) {
+	body := `
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>default</title>
+	</head>
+	<body>
+		<h1>"default"</h1>
+	</body>
+	</html>
+	`
+	io.WriteString(c, "HTTP/1.1 200 OK\r\n")
+	fmt.Fprintf(c, "Content-Length: %d\r\n", len(body))
+	fmt.Fprint(c, "Content-Type: text/html\r\n")
+	io.WriteString(c, "\r\n")
+	io.WriteString(c, body)
+}
