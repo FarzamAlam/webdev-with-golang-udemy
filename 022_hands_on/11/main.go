@@ -105,3 +105,25 @@ func handleApply(c net.Conn) {
 	io.WriteString(c, "\r\n")
 	io.WriteString(c, body)
 }
+
+func handleApplyPost(c net.Conn) {
+	body := `
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>POST APPLY</title>
+	</head>
+	<body>
+		<h1>"POST APPLY"</h1>
+		<a href="/">index</a><br>
+		<a href="/apply">apply</a><br>
+	</body>
+</html>	
+	`
+	io.WriteString(c, "HTTP/1.1 200 OK\r\n")
+	fmt.Fprintf(c, "Content-Length: %d\r\n", len(body))
+	fmt.Fprint(c, "Content-Type: text/html\r\n")
+	io.WriteString(c, "\r\n")
+	io.WriteString(c, body)
+}
